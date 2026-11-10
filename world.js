@@ -14,5 +14,18 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
     });
+const citiesButton = document.getElementById("lookup-cities");
+
+citiesButton.addEventListener("click", function() {
+
+    let country = document.getElementById("country").value;
+
+    fetch("world.php?country=" + encodeURIComponent(country) + "&lookup=cities")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("result").innerHTML = data;
+        });
+
+});
 
 });
