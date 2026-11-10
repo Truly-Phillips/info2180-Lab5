@@ -15,9 +15,23 @@ $stmt->execute(["%$country%"]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<ul>
-<?php foreach ($results as $row): ?>
-    <li><?= htmlspecialchars($row['name']) . ' is ruled by ' . htmlspecialchars($row['head_of_state'] ?? 'Unknown'); ?></li>
-<?php endforeach; ?>
-</ul>
+
+<table border="1">
+    <tr>
+        <th>Country Name</th>
+        <th>Continent</th>
+        <th>Independence Year</th>
+        <th>Head of State</th>
+    </tr>
+
+    <?php foreach ($results as $row): ?>
+    <tr>
+        <td><?= htmlspecialchars($row['name']); ?></td>
+        <td><?= htmlspecialchars($row['continent']); ?></td>
+        <td><?= htmlspecialchars($row['indep_year'] ?? 'N/A'); ?></td>
+        <td><?= htmlspecialchars($row['head_of_state'] ?? 'Unknown'); ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
 
